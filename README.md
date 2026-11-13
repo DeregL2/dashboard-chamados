@@ -7,7 +7,27 @@ Dashboard administrativo integrado a um sistema de chamados técnicos, com API p
 - JDK 17
 - Maven (ou o wrapper do seu IDE)
 - PostgreSQL rodando localmente, com um banco chamado `dashboard_chamados` (guarda os chamados)
-- MongoDB rodando localmente na porta padrão 27017 (guarda os usuários de login e as sessões) — mesma lógica de autenticação usada no ConstruCerta (M1)
+- MongoDB (local ou Atlas) configurado via `MONGODB_URI` — guarda os usuários de login e as sessões
+
+## Variáveis de ambiente
+
+A aplicação usa variáveis de ambiente para credenciais sensíveis (não ficam fixas no código):
+
+| Variável | Obrigatória | Padrão | Descrição |
+|---|---|---|---|
+| `DB_USERNAME` | Não | `postgres` | Usuário do PostgreSQL |
+| `DB_PASSWORD` | Sim | `postgres` | Senha do PostgreSQL |
+| `MONGODB_URI` | Sim | `mongodb://localhost:27017/dashboard_chamados` | String de conexão do MongoDB (Atlas ou local) |
+| `ADMIN_USERNAME` | Não | `admin` | Usuário do admin criado na primeira execução |
+| `ADMIN_EMAIL` | Não | `admin@dashboard.local` | E-mail do admin |
+| `ADMIN_PASSWORD` | Não | `TrocarSenha123!` | Senha do admin |
+
+Exemplo (PowerShell), antes de rodar `mvn spring-boot:run`:
+
+```powershell
+$env:DB_PASSWORD="sua_senha_postgres"
+$env:MONGODB_URI="mongodb+srv://usuario:senha@seu-cluster.mongodb.net/dashboard_chamados?retryWrites=true&w=majority"
+```
 
 Crie o banco Postgres antes de rodar a aplicação:
 
