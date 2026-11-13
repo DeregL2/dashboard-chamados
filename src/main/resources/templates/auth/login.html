@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login — Dashboard de Chamados</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+    <div class="login-container">
+        <form class="login-card" method="post" th:action="@{/login}">
+            <h1>Dashboard de Chamados</h1>
+            <p class="login-subtitulo">Acesso restrito ao responsável pelos chamados</p>
+
+            <div th:if="${param.error}" class="login-alerta login-alerta-erro">
+                Usuário ou senha inválidos.
+            </div>
+            <div th:if="${param.logout}" class="login-alerta login-alerta-info">
+                Você saiu da sua conta.
+            </div>
+
+            <label for="login">Usuário ou e-mail</label>
+            <input type="text" id="login" name="login" required autofocus>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+</body>
+</html>

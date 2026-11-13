@@ -1,0 +1,142 @@
+:root {
+    color-scheme: light;
+    --surface-1: #fcfcfb;
+    --page-plane: #f9f9f7;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --gridline: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11, 11, 11, 0.10);
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --series-3: #1baf7a;
+    --series-4: #eda100;
+    --series-5: #e87ba4;
+    --status-good: #0ca30c;
+    --status-warning: #fab219;
+    --status-serious: #ec835a;
+    --status-critical: #d03b3b;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --surface-1: #1a1a19;
+        --page-plane: #0d0d0d;
+        --text-primary: #f0efec;
+        --text-secondary: #c3c2b7;
+        --text-muted: #898781;
+        --gridline: #2c2c2a;
+        --baseline: #383835;
+        --border: rgba(255, 255, 255, 0.10);
+        --series-1: #3987e5;
+        --series-2: #d95926;
+        --series-3: #199e70;
+        --series-4: #c98500;
+        --series-5: #d55181;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--page-plane);
+    color: var(--text-primary);
+}
+
+.dashboard-header {
+    padding: 24px 32px;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: end;
+    padding: 0 32px 24px;
+}
+
+.filtro-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.filtro-campo input,
+.filtro-campo select {
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface-1);
+    color: var(--text-primary);
+}
+
+#botao-filtrar {
+    padding: 9px 20px;
+    border: none;
+    border-radius: 6px;
+    background: var(--series-1);
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.indicadores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    padding: 0 32px 24px;
+}
+
+.indicador-card {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.indicador-rotulo {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.indicador-valor {
+    font-size: 28px;
+    font-weight: 700;
+    font-variant-numeric: proportional-nums;
+}
+
+.graficos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+    padding: 0 32px 32px;
+}
+
+.grafico-card {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.grafico-card h2 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    color: var(--text-secondary);
+}

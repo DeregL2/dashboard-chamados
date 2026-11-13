@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard de Chamados</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header class="dashboard-header">
+        <h1>Dashboard de Chamados</h1>
+    </header>
+
+    <section class="filtros">
+        <div class="filtro-campo">
+            <label for="filtro-data-inicio">De</label>
+            <input type="date" id="filtro-data-inicio">
+        </div>
+        <div class="filtro-campo">
+            <label for="filtro-data-fim">Até</label>
+            <input type="date" id="filtro-data-fim">
+        </div>
+        <div class="filtro-campo">
+            <label for="filtro-status">Status</label>
+            <select id="filtro-status">
+                <option value="">Todos</option>
+                <option value="ABERTO">Aberto</option>
+                <option value="EM_ANDAMENTO">Em andamento</option>
+                <option value="RESOLVIDO">Resolvido</option>
+                <option value="CANCELADO">Cancelado</option>
+            </select>
+        </div>
+        <div class="filtro-campo">
+            <label for="filtro-tipo">Tipo</label>
+            <select id="filtro-tipo">
+                <option value="">Todos</option>
+                <option value="HARDWARE">Hardware</option>
+                <option value="SOFTWARE">Software</option>
+                <option value="REDE">Rede</option>
+                <option value="ACESSO">Acesso</option>
+                <option value="OUTROS">Outros</option>
+            </select>
+        </div>
+        <div class="filtro-campo">
+            <label for="filtro-prioridade">Prioridade</label>
+            <select id="filtro-prioridade">
+                <option value="">Todas</option>
+                <option value="BAIXA">Baixa</option>
+                <option value="MEDIA">Média</option>
+                <option value="ALTA">Alta</option>
+                <option value="URGENTE">Urgente</option>
+            </select>
+        </div>
+        <button id="botao-filtrar" type="button">Filtrar</button>
+    </section>
+
+    <section class="indicadores" id="secao-indicadores">
+        <div class="indicador-card">
+            <span class="indicador-rotulo">Total de chamados</span>
+            <span class="indicador-valor" id="valor-total">–</span>
+        </div>
+        <div class="indicador-card">
+            <span class="indicador-rotulo">Abertos</span>
+            <span class="indicador-valor" id="valor-abertos">–</span>
+        </div>
+        <div class="indicador-card">
+            <span class="indicador-rotulo">Em andamento</span>
+            <span class="indicador-valor" id="valor-em-andamento">–</span>
+        </div>
+        <div class="indicador-card">
+            <span class="indicador-rotulo">Resolvidos</span>
+            <span class="indicador-valor" id="valor-resolvidos">–</span>
+        </div>
+        <div class="indicador-card">
+            <span class="indicador-rotulo">Tempo médio de atendimento</span>
+            <span class="indicador-valor" id="valor-tempo-atendimento">–</span>
+        </div>
+        <div class="indicador-card">
+            <span class="indicador-rotulo">Tempo médio de resolução</span>
+            <span class="indicador-valor" id="valor-tempo-resolucao">–</span>
+        </div>
+    </section>
+
+    <section class="graficos">
+        <div class="grafico-card">
+            <h2>Chamados por período</h2>
+            <canvas id="grafico-periodo" role="img" aria-label="Chamados abertos e resolvidos por período"></canvas>
+        </div>
+        <div class="grafico-card">
+            <h2>Situação dos chamados</h2>
+            <canvas id="grafico-situacao" role="img" aria-label="Distribuição de chamados por status"></canvas>
+        </div>
+        <div class="grafico-card">
+            <h2>Tipos de chamado mais atendidos</h2>
+            <canvas id="grafico-tipos" role="img" aria-label="Ranking de tipos de chamado"></canvas>
+        </div>
+    </section>
+
+    <script th:src="@{/js/dashboard.js}"></script>
+</body>
+</html>
